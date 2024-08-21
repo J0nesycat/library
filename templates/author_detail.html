@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{author.title}}</h1>
+<p>{{author.publish_date}}</p>
+<a href="{% url 'author_edit' author.pk %}">Edit Author Details</a>
+{% endblock content %}

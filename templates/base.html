@@ -1,0 +1,52 @@
+<header style="text-align: center;">
+{% load static %}
+<head>
+        <title>Kiki`s library</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+
+<header>
+
+        <a href="{% url 'home' %}" style="font-size: 20px;">Home</a>
+        <a href="{% url 'about' %}" style="font-size: 20px;">About</a>
+        <a href="{% url 'books' %}" style="font-size: 20px;">Books</a>
+        <a href="{% url 'publishers' %}" style="font-size: 20px;">Publishers</a>
+        <a href="{% url 'author' %}" style="font-size: 20px;">Authors</a>
+
+</header>
+
+{% if user.is_authenticated %} 
+<p style="text-align:left;">Hi {{ user.username }} ({{ user.profile.get_role }})</p>
+<p style="text-align:left;"><a href="{% url 'profile_detail' pk=user.profile.pk %}">User Profile</a></p>
+<div class="logout_button">
+<form style="text-align:left;" action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button class="logout_button"type="submit">Log Out</button>
+        
+</form>
+</div>
+
+
+{% else %}
+
+<p style="text-align:left;">You are not logged in</p>
+
+<div class="main_button">
+{% csrf_token %}
+<form style="text-align:left;">
+<button class="main_button" type="submit"><a href="{% url 'login' %}">Log in</a></button>
+</form>
+</div>
+
+<div class="main_button">
+        {% csrf_token %}
+        <form style="text-align:left;">
+        <button class="main_button" type="submit"><a href="{% url 'signup' %}">Sign up</a></button>
+        </form>
+        </div>
+{% endif %}
+
+{% block content %}
+    
+{% endblock content %}

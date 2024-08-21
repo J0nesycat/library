@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h1 style="text-align: center;">Our library books page</h1>
+
+<ul>
+
+    {% for book in book_list %}
+    <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</li>
+    {% endfor %}
+    
+</ul>
+
+
+<center><img src="{% static 'kiki_long.jpg' %}" alt="kiki_long" width="600px"></center>
+
+
+
+{% endblock content %}

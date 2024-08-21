@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{%block content%}
+
+
+<p>
+     
+     <span style="float:center;">
+             <div class="dropdown" style="float:center;">
+
+                     <button class="dropbtn">ADD NEW</button>
+                     <div class="dropdown-content">
+                       <a href="{% url 'book_new' %}">+ Add a Book</a>
+                       <a href="{% url 'author_new' %}">+ Add an Author</a>
+                       <a href="{% url 'publisher_new' %}">+ Add a Publisher</a>
+                       
+                     </div>
+                   
+                   </div>    
+     </span>
+</p>
+<h1 style="text-align: center;">"It's one thing to question your mind;<br>
+     it's another to question your eyes and ears."</h1>
+     <center><img src="{% static 'pixie.jpg' %}" alt="pixie" width="1000px"></center>  
+     
+{% endblock content %}

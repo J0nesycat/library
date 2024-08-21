@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Profile for user: {{user.username}}</h1>
+<h1>Location: {{user.profile.location}}</h1>
+<h1>Role: {{user.profile.get_role}}</h1>
+<h1>Bio: {{user.profile.bio}}</h1>
+<a href="{% url 'profile_edit' profile.pk %}">Edit Profile Details</a>
+{% endif %}
+{% endblock content %}

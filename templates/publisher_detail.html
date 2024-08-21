@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{publisher.title}}</h2>
+<p>{{publisher.description}}</p>
+<p style="text-align:center;">Books: </p>
+<ul>
+    {% for auth in publisher.books.all %}
+    <li>{{ auth.title }}</li>
+   {% endfor %} 
+</ul>
+<h2>
+<a href="{% url 'publisher_edit' publisher.pk %}">Edit Publisher Details</a>
+</h2>
+{% endblock content %}
